@@ -1,14 +1,18 @@
-﻿namespace Skalalazy.ViewModels.Pages
+﻿using Skalalazy.Views.Pages;
+using Wpf.Ui;
+
+namespace Skalalazy.ViewModels.Pages
 {
-    public partial class DashboardViewModel : ObservableObject
+    public partial class DashboardViewModel(INavigationService navigationService) : ObservableObject
     {
-        [ObservableProperty]
-        private int _counter = 0;
+        private INavigationService NavigationService { get; } = navigationService;
+        [ObservableProperty] private bool _isSignIn = false;
 
         [RelayCommand]
-        private void OnCounterIncrement()
+        private void Auth()
         {
-            Counter++;
+            IsSignIn = true;
+            NavigationService.Navigate(typeof(ClimberPage));
         }
     }
 }

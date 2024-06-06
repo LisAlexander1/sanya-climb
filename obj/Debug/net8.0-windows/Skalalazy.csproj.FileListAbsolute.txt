@@ -191,3 +191,4 @@ S:\Code\C#\Skalalazy\obj\Debug\net8.0-windows\Views\Pages\ClimbersListPage.g.cs
 S:\Code\C#\Skalalazy\obj\Debug\net8.0-windows\Views\Pages\ClimbersListPage.baml
 S:\Code\C#\Skalalazy\obj\Debug\net8.0-windows\Views\Pages\GroupsListPage.g.cs
 S:\Code\C#\Skalalazy\obj\Debug\net8.0-windows\Views\Pages\GroupsListPage.baml
+S:\Code\C#\Skalalazy\obj\Debug\net8.0-windows\Skalalazy.sourcelink.json
