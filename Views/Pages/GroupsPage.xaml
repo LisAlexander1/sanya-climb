@@ -1,0 +1,74 @@
+﻿<Page
+    Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+    ScrollViewer.CanContentScroll="False"
+    Title="StudentPage"
+    d:DataContext="{d:DesignInstance pages:GroupsPage,
+                                     IsDesignTimeCreatable=False}"
+    d:DesignHeight="500"
+    d:DesignWidth="800"
+    mc:Ignorable="d"
+    ui:Design.Background="{DynamicResource ApplicationBackgroundBrush}"
+    ui:Design.Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+    x:Class="Skalalazy.Views.Pages.GroupsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:entities="clr-namespace:Skalalazy.Entities"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:pages="clr-namespace:Skalalazy.Views.Pages"
+    xmlns:sdl="http://schemas.sdl.com/xaml"
+    xmlns:system="clr-namespace:System;assembly=System.Runtime"
+    xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+    xmlns:userControls="clr-namespace:Skalalazy.Views.Pages.UserControls"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Page.Resources />
+    <Grid VerticalAlignment="Top">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <userControls:FormControl
+            AddCommand="{Binding ViewModel.AddCommand}"
+            Count="{Binding ViewModel.ItemsList.Count}"
+            CreateCommand="{Binding ViewModel.CreateCommand}"
+            DecreaseIndexCommand="{Binding ViewModel.DecreaseIndexCommand}"
+            DeleteCommand="{Binding ViewModel.DeleteCommand}"
+            FirstIndexCommand="{Binding ViewModel.FirstIndexCommand}"
+            Grid.Row="0"
+            IncreaseIndexCommand="{Binding ViewModel.IncreaseIndexCommand}"
+            Index="{Binding ViewModel.Index}"
+            IsCreateForm="{Binding ViewModel.IsCreateForm}"
+            IsDeleteItem="{Binding ViewModel.IsDeleteItem}"
+            LastIndexCommand="{Binding ViewModel.LastIndexCommand}"
+            Loading="{Binding ViewModel.Saving}"
+            SaveCommand="{Binding ViewModel.SaveCommand}"
+            Title="Предметы" />
+
+
+        <ScrollViewer Grid.Row="1">
+            <StackPanel Margin="10,10,20,10">
+                <Label Content="Название" />
+                <ui:TextBox Margin="0,0,0,5" Text="{Binding ViewModel.Name}" />
+
+                <Label Content="Дата начала восхождения" />
+                <DatePicker Margin="0,0,0,5" SelectedDate="{Binding ViewModel.StartUphillDate}" />
+
+                <Label Content="Вершина" />
+                <ComboBox
+                    ItemsSource="{Binding ViewModel.Peaks}"
+                    SelectedValue="{Binding ViewModel.PeakId}"
+                    SelectedValuePath="Id">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate DataType="{x:Type entities:Peak}">
+                            <ui:TextBlock Text="{Binding Name}" />
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+
+                <Separator Margin="0,10" />
+
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>
